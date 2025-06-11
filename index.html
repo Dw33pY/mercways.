@@ -5,308 +5,633 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mercways Excelling Limited - Recruitment Consultancy</title>
     <style>
-        /* Modern Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Global Styles */
+        :root {
+            --primary-color: #1a3e72;
+            --secondary-color: #e8491d;
+            --text-color: #333;
+            --light-color: #f9f9f9;
+            --white: #ffffff;
+            --dark-gray: #444;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
-        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
+            color: var(--text-color);
+            background-color: var(--light-color);
             overflow-x: hidden;
         }
         
-        /* Improved Container */
         .container {
-            width: 100%;
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
         
-        /* Enhanced Header */
+        h1, h2, h3, h4 {
+            line-height: 1.2;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Header Styles */
         header {
-            background: linear-gradient(135deg, #1a3e72 0%, #0d2b56 100%);
-            color: white;
-            padding: 1.5rem 0;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 20px 0;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-bottom: 5px solid var(--secondary-color);
         }
         
         header h1 {
             margin: 0;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
         }
         
         header p {
+            margin-top: 10px;
             font-size: clamp(1rem, 2vw, 1.2rem);
-            margin-top: 0.5rem;
-            opacity: 0.9;
         }
         
-        /* Modern Navigation */
+        /* Navigation */
         nav {
-            background: #e8491d;
+            background: var(--secondary-color);
+            padding: 10px 0;
             position: sticky;
             top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: bold;
+            color: var(--white);
+            font-size: 1.2rem;
+            display: none;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--white);
         }
         
         nav ul {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            list-style: none;
-            padding: 0.8rem 0;
         }
         
         nav li {
-            margin: 0.3rem 1rem;
+            margin: 0 10px;
         }
         
         nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: clamp(0.9rem, 2vw, 1rem);
-            padding: 0.3rem 0.5rem;
-            border-radius: 4px;
-            transition: all 0.3s ease;
+            color: var(--white);
+            font-weight: bold;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 3px;
         }
         
         nav a:hover {
-            background: rgba(255,255,255,0.2);
+            background-color: rgba(255, 255, 255, 0.2);
         }
         
-        /* Hero Section Improvements */
-        #hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-            color: white;
+        /* Section Styles */
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid #e1e1e1;
+        }
+        
+        section h2 {
+            color: var(--primary-color);
             text-align: center;
-            padding: 5rem 1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 30px;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+        }
+        
+        section h3 {
+            color: var(--primary-color);
+            margin: 20px 0 15px;
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+        }
+        
+        section p, section li {
+            margin-bottom: 15px;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+        
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
         }
         
         #hero h2 {
             font-size: clamp(1.8rem, 4vw, 2.5rem);
-            margin-bottom: 1.5rem;
-            line-height: 1.3;
-        }
-        
-        #hero p {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            max-width: 800px;
-            margin: 0 auto;
-            opacity: 0.9;
-        }
-        
-        /* Section Styling */
-        section {
-            padding: 3rem 0;
-        }
-        
-        section h2 {
-            color: #1a3e72;
-            text-align: center;
-            margin-bottom: 2rem;
-            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 20px;
             position: relative;
         }
         
-        section h2::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: #e8491d;
-            margin: 0.8rem auto;
-            border-radius: 2px;
+        #hero p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
         }
         
-        section p {
-            margin-bottom: 1.2rem;
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-        
-        /* Services Grid Improvements */
+        /* Services Grid */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            gap: 25px;
+            margin-top: 30px;
         }
         
         .service-card {
-            background: white;
-            padding: 1.5rem;
+            background: var(--white);
+            padding: 25px;
             border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #eee;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
         
         .service-card h3 {
-            color: #e8491d;
-            border-bottom: 2px solid #1a3e72;
-            padding-bottom: 0.8rem;
-            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
             font-size: 1.3rem;
         }
         
         .service-card ul {
-            padding-left: 1.2rem;
+            padding-left: 20px;
         }
         
         .service-card li {
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
+            list-style-type: disc;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
         }
         
-        /* Values List Improvements */
+        /* Values List */
         .values-list {
-            list-style: none;
-            max-width: 800px;
-            margin: 0 auto;
+            margin-top: 30px;
         }
         
         .values-list li {
-            background: white;
-            margin-bottom: 1.2rem;
-            padding: 1.5rem;
-            border-left: 5px solid #1a3e72;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-            border-radius: 0 4px 4px 0;
+            background: var(--white);
+            margin-bottom: 20px;
+            padding: 20px;
+            border-left: 5px solid var(--primary-color);
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s;
+        }
+        
+        .values-list li:hover {
+            transform: translateX(5px);
         }
         
         .values-list h3 {
-            color: #e8491d;
-            margin-bottom: 0.8rem;
-            font-size: 1.2rem;
+            color: var(--secondary-color);
         }
         
-        /* Contact Section */
+        /* Contact Info */
         .contact-info {
-            background: white;
-            padding: 2rem;
+            background: var(--white);
+            padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: var(--box-shadow);
             max-width: 600px;
             margin: 0 auto;
         }
         
         .contact-info h3 {
-            color: #1a3e72;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
         }
         
         .contact-info p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+            width: 20px;
+            text-align: center;
         }
         
         /* Footer */
         footer {
-            background: linear-gradient(135deg, #1a3e72 0%, #0d2b56 100%);
-            color: white;
+            background: var(--primary-color);
+            color: var(--white);
             text-align: center;
-            padding: 2.5rem 0;
-            margin-top: 3rem;
+            padding: 40px 0;
+            margin-top: 40px;
         }
         
         .social-links {
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
         }
         
         .social-links a {
-            color: white;
-            margin: 0 0.8rem;
-            font-size: 1.5rem;
-            transition: opacity 0.3s;
             display: inline-block;
+            margin: 0 15px;
+            font-size: 1.5rem;
+            color: var(--white);
+            transition: transform 0.3s, color 0.3s;
         }
         
         .social-links a:hover {
-            opacity: 0.8;
+            color: var(--secondary-color);
+            transform: translateY(-5px);
         }
         
         footer p {
-            margin: 0.5rem 0;
-            opacity: 0.9;
+            margin: 10px 0;
+            font-size: 0.9rem;
         }
         
-        /* Responsive Adjustments */
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--secondary-color);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 99;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Responsive Design */
         @media (max-width: 768px) {
-            nav ul {
+            .container {
+                width: 95%;
+            }
+            
+            nav .container {
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
+            }
+            
+            .hamburger {
+                display: block;
+                position: absolute;
+                top: 10px;
+                right: 20px;
+            }
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            nav ul.active {
+                display: flex;
             }
             
             nav li {
-                margin: 0.5rem 0;
+                margin: 5px 0;
+                text-align: center;
+            }
+            
+            nav a {
+                display: block;
+                padding: 10px;
             }
             
             #hero {
-                padding: 3rem 1rem;
+                padding: 80px 20px;
             }
             
             section {
-                padding: 2rem 0;
+                padding: 30px 0;
+            }
+            
+            .service-card {
+                padding: 20px;
             }
             
             .contact-info {
-                padding: 1.5rem;
+                padding: 20px;
             }
         }
         
         @media (max-width: 480px) {
-            .container {
-                padding: 0 15px;
+            .services-grid {
+                grid-template-columns: 1fr;
             }
             
-            header {
-                padding: 1rem 0;
+            .contact-info {
+                padding: 15px;
             }
-            
-            #hero {
-                padding: 2rem 1rem;
-            }
-            
-            .service-card {
-                padding: 1.2rem;
-            }
-        }
-        
-        /* Animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        section {
-            animation: fadeIn 0.6s ease-out forwards;
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <!-- Header and Navigation remain the same as before -->
-    <!-- All content sections remain the same as before -->
-    <!-- Only CSS has been updated for responsiveness -->
+    <header>
+        <div class="container">
+            <h1>Mercways Excelling Limited</h1>
+            <p>Where dreams come true</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <div class="logo">Mercways</div>
+            <div class="hamburger">☰</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#values">Our Values</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section id="hero">
+        <div class="container">
+            <h2>Welcome to Mercways Excelling Ltd</h2>
+            <p>Mercways Excelling Limited is an independently owned recruitment consultancy firm, which offers unrivalled recruitment and staffing solutions for both work candidates and employers. We are at the helm of human resource sector focusing on all elements of recruitment.</p>
+        </div>
+    </section>
+    
+    <section id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>Mercways Excelling Limited is one of the top growing recruitment firms with its focus on premium placement services.</p>
+            <p>We are legally registered with the ministry of labor and we engage in job placements of highly qualified trained, competent skilled and unskilled staffs globally. We commit ourselves to satisfy our clients and staffs.</p>
+            
+            <h3>Our Mission</h3>
+            <p>To provide excellent, prompt, and efficient services that consistently meet needs using a combination of deep industry knowledge, integrity and experiences. We maintain the highest standards in clients and applicants care.</p>
+            
+            <h3>The Team</h3>
+            <p>Our company is led by a team of recruitment experts with specialist knowledge of a whole range of markets and industries. Our consultants bring together a rare blend of years of recruitment and industry expertise which is reflected in the range of recruitment options we offer our clients and the sheer speed of our recruitment and selection process.</p>
+            <p>Providing excellent customer service and sustained support to our clients and candidates underpins our business and is an area we are always developing. Our candidates and clients benefit intensely from our extensive network of industry contacts and the specialist sector knowledge of our consultants.</p>
+        </div>
+    </section>
+    
+    <section id="services">
+        <div class="container">
+            <h2>What We Do</h2>
+            <p>We aim to provide a tailored and professional recruitment services that helps best meet the needs of our clients. To provide strong, fast dynamic and responsive experience to our clients by searching the best candidates.</p>
+            <p>Mercways Excelling Limited aims to focus on the enhancement of client organizations by providing quality services on various aspects of their human resource and letting the organization focus on its core values. Our solutions aim in reducing employers recruitment process by searching through CVs, responding to candidates and arranging interviews. We do this by providing on-site and off-site recruiters who are dedicated in giving our clients value for their money.</p>
+        </div>
+    </section>
+    
+    <section id="values">
+        <div class="container">
+            <h2>Our Guiding Values</h2>
+            <p>At Mercways Excelling Limited our values are reflected in the way we do business. Integrity and honesty represent the foundation of all operations. Furthermore, we strive to conduct our business and ourselves in a most professional manner.</p>
+            <p>We also conduct ourselves with a policy of utmost good faith and as a results, we are determined to provide our clients with the best recruitment solution for their business.</p>
+            
+            <ul class="values-list">
+                <li>
+                    <h3>Integrity</h3>
+                    <p>Inspiring trust and confidence through maintaining ethical and professional standards, saying what we mean, doing what we say and taking responsibility of our actions.</p>
+                </li>
+                <li>
+                    <h3>Openness</h3>
+                    <p>Fostering a collaborative way of working through information sharing, actively listening and giving constructive challenge.</p>
+                </li>
+                <li>
+                    <h3>Results Focused</h3>
+                    <p>Striving to deliver on our commitments with our clients needs in mind, on time and to the highest standard.</p>
+                </li>
+            </ul>
+            
+            <h3>Equal Opportunities Policy</h3>
+            <p>Mercways Excelling Limited is committed to providing a working environment in which employees are able to realize their full potential and contribute to business success irrespective of his or her gender, race, color, nationality, ethnic or racial origin, marital status, sexual orientation, religion, or disability, ensuring that the provisions of equality are strictly adhered to.</p>
+            <p>Mercways Excelling Limited is committed to identifying and eliminating discriminatory practices, procedures and attitudes throughout the organization. Specifically, Mercways Excelling Limited aims to ensure that no employee or job applicant is discriminated against, either directly or indirectly.</p>
+        </div>
+    </section>
+    
+    <section id="expertise">
+        <div class="container">
+            <h2>Areas of Expertise</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Technical</h3>
+                    <ul>
+                        <li>Heavy engineering and fabrication</li>
+                        <li>Building and Construction</li>
+                        <li>Onshore and Offshore drilling</li>
+                        <li>Transportation</li>
+                        <li>Power Stations</li>
+                        <li>Agriculture</li>
+                        <li>Automotive electronics and Mechanic</li>
+                        <li>Various Semi-Skilled workforce</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Hospitality and Catering</h3>
+                    <ul>
+                        <li>Concierges</li>
+                        <li>Butler</li>
+                        <li>Room Attendant</li>
+                        <li>House Keepers</li>
+                        <li>Chefs</li>
+                        <li>Waiters</li>
+                        <li>Valet Attendant</li>
+                        <li>Guest Relations</li>
+                        <li>General Maintenance</li>
+                        <li>Bartenders and Janitorial Services</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Security Services</h3>
+                    <ul>
+                        <li>Patrol Units</li>
+                        <li>Security Guards</li>
+                        <li>Body Guards</li>
+                        <li>Doormen</li>
+                        <li>Observers</li>
+                        <li>Camp Support Staff</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Retail Services and Customer Care</h3>
+                    <ul>
+                        <li>Showroom Staff</li>
+                        <li>Shop Attendants</li>
+                        <li>Cashiers</li>
+                        <li>Cleaners</li>
+                        <li>Customer Service Staff</li>
+                        <li>Call Center Staff</li>
+                        <li>Semi-skilled and skilled Maintenance Personnel</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Health Care and Pharmaceuticals</h3>
+                    <ul>
+                        <li>General Practitioners</li>
+                        <li>Nurses</li>
+                        <li>Doctors</li>
+                        <li>Therapists</li>
+                        <li>Paramedics</li>
+                        <li>Laboratory Technicians</li>
+                        <li>Dermatologists</li>
+                        <li>Radiologists</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Information Technology</h3>
+                    <ul>
+                        <li>Project Managers</li>
+                        <li>Software Developers</li>
+                        <li>Programmers</li>
+                        <li>Web Designers</li>
+                        <li>E-Commerce Executives</li>
+                        <li>Other IT Professionals</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <h3>Address</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Jewel Complex, 5th Floor<br>
+                Roysambu, Along Thika Road<br>
+                P.O BOX 767-00618<br>
+                Ruaraka-Nairobi<br>
+                Kenya</p>
+                
+                <h3>Contacts</h3>
+                <p><i class="fas fa-envelope"></i> Email: mercwaysdocs@gmail.com</p>
+                <p><i class="fas fa-phone"></i> Tel: +254 752 159 662</p>
+                <p><i class="fab fa-facebook"></i> Facebook: Mercways Excelling Limited</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2023 Mercways Excelling Limited. All rights reserved.</p>
+            <p>Where dreams come true</p>
+        </div>
+    </footer>
+    
+    <a href="#" class="back-to-top" title="Go to top">↑</a>
+    
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('nav ul');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Back to Top Button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
